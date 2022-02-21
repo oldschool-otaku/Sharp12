@@ -1,0 +1,14 @@
+﻿FLOAT Q_RSQRT( FLOAT NUMBER )
+{
+	LONG I;
+	FLOAT X2, Y;
+	CONST FLOAT THREEHALFS = 1.5F;
+
+	X2 = NUMBER * 0.5F;
+	Y  = NUMBER;
+	I  = * ( LONG * ) &Y;						// EVIL FLOATING POINT BIT LEVEL HACKING
+	I  = 0X5F3759DF - ( I >> 1 );               // WHAT THE FUCK?
+	Y  = * ( FLOAT * ) &I;
+	Y  = Y * ( THREEHALFS - ( X2 * Y * Y ) );   // 1ST ITERATION
+	RETURN Y;
+}

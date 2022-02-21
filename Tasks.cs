@@ -14,16 +14,18 @@ namespace Sharp12
         //TODO: переписать это говно
         public static void BadCode(string inputFileName)
         {
-            const string outputFileName = "ResultText";
 
             if (File.Exists(inputFileName))
             {
                 if (inputFileName != null)
-                    File.WriteAllText(outputFileName,
+                {
+                    File.WriteAllText("C:/Users/ArtSt/RiderProjects/Sharp12/ResultText.txt",
                         File.ReadAllText(inputFileName, Encoding.UTF8).ToUpper(),
                         Encoding.UTF8);
-                
-                Console.WriteLine("Result has been saved in file \"{0}\"", outputFileName);
+                    
+                }
+
+                Console.WriteLine("Result has been saved in file ResultText");
             }
             else
             {
